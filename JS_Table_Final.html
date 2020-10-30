@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <p id="display"></p>
+    <p id="row"></p>
+    <script>
+        var count = 0;
+        function buildTable() {
+            var table = document.createElement('table');
+            table.setAttribute("id", "Table");
+            table.setAttribute("class", "table-dark");
+            var table_row = document.createElement('tr');
+
+            var table_th1 = document.createElement('th');
+            var table_th2 = document.createElement('th');
+            var table_th3 = document.createElement('th');
+            var table_th4 = document.createElement('th');
+            var table_th5 = document.createElement('th');
+
+            var text1 = document.createTextNode("User_ID");
+            var text2 = document.createTextNode("User_Name");
+            var text3 = document.createTextNode("Age");
+            var text4 = document.createTextNode("Gender");
+            var text5 = document.createTextNode("Add/Delete");
+
+            table_th1.appendChild(text1);
+            table_th2.appendChild(text2);
+            table_th3.appendChild(text3);
+            table_th4.appendChild(text4);
+            table_th5.appendChild(text5);
+
+            table_row.appendChild(table_th1);
+            table_row.appendChild(table_th2);
+            table_row.appendChild(table_th3);
+            table_row.appendChild(table_th4);
+            table_row.appendChild(table_th5);
+
+
+            table.appendChild(table_row);
+            document.body.appendChild(table);
+
+        }
+        buildTable(document.getElementById("display"));
+
+        function addRow() {
+            var table = document.getElementById("Table");
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+
+            var cell1 = row.insertCell(0);
+            var element1 = document.createElement("input");
+            element1.type = "text";
+            element1.name = "txtbox[]";
+            element1.value = count += 1;
+            cell1.appendChild(element1);
+
+            var cell2 = row.insertCell(1);
+            var element2 = document.createElement("input");
+            element2.type = "text";
+            element2.name = "txtbox[]";
+            cell2.appendChild(element2);
+
+            var cell3 = row.insertCell(2);
+            var element3 = document.createElement("input");
+            element3.type = "text";
+            element3.name = "txtbox[]";
+            cell3.appendChild(element3);
+
+            var cell4 = row.insertCell(3);
+            var x = document.createElement("select");
+            var y = document.createElement("option");
+            y.setAttribute("value", "Male");
+            var t = document.createTextNode("Male");
+            y.appendChild(t);
+            x.appendChild(y);
+            var y = document.createElement("option");
+            y.setAttribute("value", "Female");
+            var t = document.createTextNode("Female");
+            y.appendChild(t);
+            x.appendChild(y);
+            cell4.appendChild(x);
+
+            var cell5 = row.insertCell(4);
+            var btn = document.createElement("button");
+            var t = document.createTextNode("+");
+            btn.onclick = function () { addRow() };
+            btn.appendChild(t);
+            cell5.appendChild(btn);
+            
+            
+            
+
+
+        }
+
+        addRow(document.getElementById("row"));
+
+       
+    </script>
+
+    <style>
+        th {
+            text-align:center;
+        }
+    </style>
+
+    
+
+</body>
+</html>
